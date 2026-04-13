@@ -4,50 +4,62 @@ import { useState } from "react"
 
 const skillCategories = [
   {
-    name: "Frontend",
+    name: "Data & Visualization",
     skills: [
-      { name: "React", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "Next.js", level: 80 },
-      { name: "Tailwind CSS", level: 90 },
-      { name: "HTML/CSS", level: 95 },
+      { name: "Excel (Pivot, VLOOKUP, Power Query)", level: 95 },
+      { name: "Power BI", level: 90 },
+      { name: "Tableau", level: 85 },
+      { name: "Matplotlib & Seaborn", level: 85 },
     ],
   },
   {
-    name: "Backend",
+    name: "Programming",
     skills: [
-      { name: "Node.js", level: 80 },
-      { name: "Python", level: 85 },
-      { name: "PostgreSQL", level: 75 },
-      { name: "REST APIs", level: 85 },
-      { name: "GraphQL", level: 70 },
+      { name: "Python (Pandas, NumPy, Scikit-learn)", level: 90 },
+      { name: "SQL (MySQL, PostgreSQL)", level: 90 },
+      { name: "JavaScript", level: 70 },
+      { name: "MongoDB", level: 65 },
     ],
   },
   {
-    name: "Tools & Others",
+    name: "ML & Statistics",
     skills: [
-      { name: "Git", level: 90 },
-      { name: "Docker", level: 65 },
-      { name: "AWS", level: 60 },
-      { name: "Figma", level: 75 },
-      { name: "Agile/Scrum", level: 80 },
+      { name: "Supervised & Unsupervised Learning", level: 80 },
+      { name: "Feature Engineering", level: 80 },
+      { name: "EDA & Hypothesis Testing", level: 90 },
+      { name: "Time-Series Forecasting", level: 75 },
+    ],
+  },
+  {
+    name: "Web Technologies",
+    skills: [
+      { name: "React.js", level: 70 },
+      { name: "Node.js & Express.js", level: 65 },
+      { name: "HTML & CSS", level: 80 },
+      { name: "Git", level: 75 },
     ],
   },
 ]
 
 const technologies = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Node.js",
   "Python",
+  "SQL",
+  "Excel",
+  "Power BI",
+  "Tableau",
+  "Pandas",
+  "NumPy",
+  "Scikit-learn",
+  "Matplotlib",
+  "Seaborn",
+  "MySQL",
   "PostgreSQL",
   "MongoDB",
+  "Jupyter Notebook",
   "Git",
-  "Docker",
-  "AWS",
-  "Tailwind CSS",
+  "React.js",
+  "Node.js",
+  "Google Sheets",
 ]
 
 export function Skills() {
@@ -57,13 +69,13 @@ export function Skills() {
     <section id="skills" className="py-24 px-6 md:px-12 lg:px-24 bg-card/50">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Technical Skills</h2>
           <div className="h-px bg-border flex-1 max-w-xs" />
         </div>
 
         <div className="mb-12">
           <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-            Here are the technologies and tools I&apos;ve been working with recently:
+            Here are the technologies and tools I work with to transform data into insights:
           </p>
           
           <div className="flex flex-wrap gap-3">
@@ -79,12 +91,12 @@ export function Skills() {
         </div>
 
         <div className="bg-card rounded-lg border border-border p-6 md:p-8">
-          <div className="flex gap-2 mb-8 border-b border-border">
+          <div className="flex gap-2 mb-8 border-b border-border overflow-x-auto">
             {skillCategories.map((category, index) => (
               <button
                 key={category.name}
                 onClick={() => setActiveCategory(index)}
-                className={`px-4 py-3 text-sm font-medium transition-colors relative ${
+                className={`px-4 py-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
                   activeCategory === index
                     ? "text-accent"
                     : "text-muted-foreground hover:text-foreground"

@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Mail, Send, MapPin } from "lucide-react"
+import { Github, Linkedin, Mail, Send, MapPin, Phone } from "lucide-react"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -51,9 +51,9 @@ export function Contact() {
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              I&apos;m currently looking for internship opportunities and would love to hear 
-              from you. Whether you have a question, a project idea, or just want to say hi, 
-              my inbox is always open!
+              I&apos;m always open to discussing data analytics projects, training opportunities, 
+              or collaboration ideas. Whether you have a question or just want to connect, 
+              feel free to reach out!
             </p>
 
             <div className="space-y-6">
@@ -64,10 +64,25 @@ export function Contact() {
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
                   <a 
-                    href="mailto:alex@example.com" 
+                    href="mailto:jaganathankt542@gmail.com" 
                     className="text-foreground hover:text-accent transition-colors"
                   >
-                    alex@example.com
+                    jaganathankt542@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center">
+                  <Phone className="h-5 w-5 text-accent" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Phone</p>
+                  <a 
+                    href="tel:+919952734175" 
+                    className="text-foreground hover:text-accent transition-colors"
+                  >
+                    +91 9952734175
                   </a>
                 </div>
               </div>
@@ -78,14 +93,14 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
-                  <p className="text-foreground">Stanford, California</p>
+                  <p className="text-foreground">Coimbatore, Tamil Nadu</p>
                 </div>
               </div>
             </div>
 
             <div className="flex gap-4 mt-8">
               <a 
-                href="https://github.com" 
+                href="https://github.com/jaganathankt" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-accent hover:bg-secondary/80 transition-colors"
@@ -94,7 +109,7 @@ export function Contact() {
                 <Github className="h-5 w-5" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://linkedin.com/in/jaganathankt" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-accent hover:bg-secondary/80 transition-colors"
@@ -147,7 +162,7 @@ export function Contact() {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                placeholder="What&apos;s this about?"
+                placeholder="What is this about?"
                 required
                 className="bg-input border-border text-foreground placeholder:text-muted-foreground focus:border-accent"
               />

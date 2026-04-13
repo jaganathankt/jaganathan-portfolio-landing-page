@@ -1,4 +1,4 @@
-import { Code, BookOpen, Lightbulb } from "lucide-react"
+import { BarChart3, GraduationCap, Users } from "lucide-react"
 
 export function About() {
   return (
@@ -12,20 +12,22 @@ export function About() {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div className="md:col-span-2 space-y-6">
             <p className="text-muted-foreground text-lg leading-relaxed">
-              I&apos;m a third-year Computer Science student at Stanford University with a passion 
-              for building software that makes a difference. My journey in tech started when I 
-              built my first website at 14, and I&apos;ve been hooked ever since.
+              I&apos;m a Data Analyst with 4+ years of combined experience in data analytics, 
+              data science training, and real-time data analysis. My journey in data started 
+              with a passion for uncovering insights hidden in numbers, and I&apos;ve been 
+              transforming raw data into actionable business intelligence ever since.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Currently, I&apos;m exploring the intersection of web development and machine learning, 
-              working on projects that leverage AI to enhance user experiences. When I&apos;m not 
-              coding, you&apos;ll find me contributing to open-source projects or mentoring 
-              fellow students in our university&apos;s coding club.
+              Currently working at Bluekode Solutions, I manage end-to-end data analysis 
+              operations while also training the next generation of data professionals. I&apos;ve 
+              led teams on complex analysis projects including price forecasting, sales analysis, 
+              and competitive analysis for real businesses.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              I believe in writing clean, maintainable code and creating products that are 
-              accessible to everyone. My goal is to join a team where I can continue learning 
-              while making meaningful contributions to impactful projects.
+              I believe in the power of data storytelling and making complex findings accessible 
+              to everyone — from students to business stakeholders. I&apos;ve guided 200+ learners 
+              through their data analytics journey and mentored 50+ students toward successful 
+              placements in MNC companies.
             </p>
           </div>
 
@@ -33,7 +35,7 @@ export function About() {
             <div className="relative">
               <div className="w-48 h-48 md:w-56 md:h-56 rounded-lg bg-secondary overflow-hidden border-2 border-accent/30">
                 <div className="w-full h-full bg-gradient-to-br from-accent/20 to-secondary flex items-center justify-center">
-                  <span className="text-6xl font-bold text-accent/50">AC</span>
+                  <span className="text-6xl font-bold text-accent/50">JK</span>
                 </div>
               </div>
               <div className="absolute -bottom-3 -right-3 w-48 h-48 md:w-56 md:h-56 border-2 border-accent rounded-lg -z-10" />
@@ -43,24 +45,24 @@ export function About() {
 
         <div className="grid sm:grid-cols-3 gap-6">
           <div className="bg-card p-6 rounded-lg border border-border hover:border-accent/50 transition-colors">
-            <Code className="h-8 w-8 text-accent mb-4" />
-            <h3 className="text-foreground font-semibold mb-2">Development</h3>
+            <BarChart3 className="h-8 w-8 text-accent mb-4" />
+            <h3 className="text-foreground font-semibold mb-2">Data Analytics</h3>
             <p className="text-muted-foreground text-sm">
-              Full-stack development with modern frameworks and best practices.
+              Transforming complex datasets into clear, actionable business insights.
             </p>
           </div>
           <div className="bg-card p-6 rounded-lg border border-border hover:border-accent/50 transition-colors">
-            <BookOpen className="h-8 w-8 text-accent mb-4" />
-            <h3 className="text-foreground font-semibold mb-2">Research</h3>
+            <GraduationCap className="h-8 w-8 text-accent mb-4" />
+            <h3 className="text-foreground font-semibold mb-2">Training & Mentorship</h3>
             <p className="text-muted-foreground text-sm">
-              Exploring machine learning applications in web accessibility.
+              Guided 200+ learners and mentored 50+ students toward MNC placements.
             </p>
           </div>
           <div className="bg-card p-6 rounded-lg border border-border hover:border-accent/50 transition-colors">
-            <Lightbulb className="h-8 w-8 text-accent mb-4" />
-            <h3 className="text-foreground font-semibold mb-2">Innovation</h3>
+            <Users className="h-8 w-8 text-accent mb-4" />
+            <h3 className="text-foreground font-semibold mb-2">Team Leadership</h3>
             <p className="text-muted-foreground text-sm">
-              Building creative solutions to complex technical challenges.
+              Led intern teams on multi-domain analysis projects with real business impact.
             </p>
           </div>
         </div>

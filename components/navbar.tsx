@@ -45,7 +45,7 @@ export function Navbar() {
             window.scrollTo({ top: 0, behavior: "smooth" })
           }}
         >
-          AC
+          JKT
         </a>
 
         {/* Desktop Navigation */}
