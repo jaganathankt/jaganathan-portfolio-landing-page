@@ -1,23 +1,63 @@
+"use client"
+
 import { BarChart3, GraduationCap, Users, TrendingUp } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
 const stats = [
-  { value: "4+", label: "Years Experience", icon: TrendingUp },
-  { value: "200+", label: "Learners Trained", icon: GraduationCap },
-  { value: "50+", label: "MNC Placements", icon: Users },
-  { value: "10+", label: "Projects Delivered", icon: BarChart3 },
+  { value: 4, suffix: "+", label: "Years Experience", icon: TrendingUp },
+  { value: 200, suffix: "+", label: "Learners Trained", icon: GraduationCap },
+  { value: 50, suffix: "+", label: "MNC Placements", icon: Users },
+  { value: 10, suffix: "+", label: "Projects Delivered", icon: BarChart3 },
 ]
+
+function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  const [hasAnimated, setHasAnimated] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true)
+          let start = 0
+          const duration = 2000
+          const increment = value / (duration / 16)
+          
+          const timer = setInterval(() => {
+            start += increment
+            if (start >= value) {
+              setCount(value)
+              clearInterval(timer)
+            } else {
+              setCount(Math.floor(start))
+            }
+          }, 16)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [value, hasAnimated])
+
+  return <span ref={ref}>{count}{suffix}</span>
+}
 
 export function About() {
   return (
-    <section id="about" className="py-24 md:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/5 to-transparent" />
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 animated-gradient opacity-30" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
       <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
             <span className="text-primary font-mono text-sm">01.</span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">About Me</h2>
-            <div className="h-px bg-border flex-1 max-w-xs" />
+            <div className="h-px bg-gradient-to-r from-border to-transparent flex-1 max-w-xs" />
           </div>
           
           <p className="text-muted-foreground mb-16 max-w-xl">
@@ -44,9 +84,13 @@ export function About() {
               <div className="pt-4">
                 <p className="text-foreground font-medium mb-4">Technologies I work with:</p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {["Python", "SQL", "Excel", "Power BI", "Tableau", "Pandas"].map((tech) => (
-                    <div key={tech} className="flex items-center gap-2 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  {["Python", "SQL", "Excel", "Power BI", "Tableau", "Pandas"].map((tech, index) => (
+                    <div 
+                      key={tech} 
+                      className="flex items-center gap-2 text-muted-foreground group hover:text-foreground transition-colors"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-150 transition-transform" />
                       <span className="text-sm">{tech}</span>
                     </div>
                   ))}
@@ -57,25 +101,30 @@ export function About() {
             <div className="lg:col-span-2">
               <div className="relative group">
                 <div className="relative w-full aspect-square max-w-sm mx-auto">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20" />
-                  <div className="absolute inset-4 rounded-xl bg-secondary flex items-center justify-center">
-                    <span className="text-8xl font-bold text-primary/30">JK</span>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/30 to-primary/5 border border-primary/30 animate-pulse-glow" />
+                  <div className="absolute inset-4 rounded-xl glass flex items-center justify-center overflow-hidden">
+                    <span className="text-8xl font-bold text-gradient">JK</span>
                   </div>
-                  <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-2 border-primary/30 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
+                  <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-2 border-primary/30 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Stats */}
+          {/* Stats with animated counters */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
-            {stats.map((stat) => (
+            {stats.map((stat, index) => (
               <div 
                 key={stat.label} 
-                className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-colors group"
+                className="p-6 rounded-2xl glass border border-border hover:border-primary/50 transition-all group hover:scale-105 hover:shadow-lg hover:shadow-primary/10"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <stat.icon className="h-8 w-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
-                <p className="text-4xl font-bold text-foreground mb-1">{stat.value}</p>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <stat.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
+                </div>
+                <p className="text-4xl font-bold text-foreground mb-1">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                </p>
                 <p className="text-muted-foreground text-sm">{stat.label}</p>
               </div>
             ))}

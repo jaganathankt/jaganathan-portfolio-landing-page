@@ -1,8 +1,14 @@
 "use client"
 
-import { useState } from "react"
-import { Calendar, MapPin, ExternalLink } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Calendar, MapPin, Briefcase, ChevronRight, Building2 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+
+const experienceImages = [
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80",
+  "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1920&q=80",
+]
 
 const experiences = [
   {
@@ -52,96 +58,162 @@ const experiences = [
 
 export function Experience() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [bgIndex, setBgIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % experienceImages.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <section id="experience" className="py-24 md:py-32 bg-card/30">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
+    <section id="experience" className="py-24 md:py-32 relative overflow-hidden">
+      {/* Background image carousel */}
+      <div className="absolute inset-0">
+        {experienceImages.map((img, index) => (
+          <div
+            key={img}
+            className={`absolute inset-0 transition-opacity duration-[2000ms] ${
+              index === bgIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img src={img} alt="" className="w-full h-full object-cover" />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-background/95" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
+      </div>
+
+      {/* Floating elements */}
+      <div className="absolute top-20 right-20 w-32 h-32 border border-primary/20 rounded-full animate-float opacity-30" />
+      <div className="absolute bottom-40 left-10 w-24 h-24 border border-primary/20 rounded-full animate-float opacity-20" style={{ animationDelay: "-2s" }} />
+      
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
             <span className="text-primary font-mono text-sm">02.</span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Experience</h2>
-            <div className="h-px bg-border flex-1 max-w-xs" />
+            <div className="h-px bg-gradient-to-r from-border to-transparent flex-1 max-w-xs" />
           </div>
           
           <p className="text-muted-foreground mb-16 max-w-xl">
             My professional journey through data analytics and training.
           </p>
 
-          <div className="grid lg:grid-cols-12 gap-8">
-            {/* Tab buttons - Left side */}
-            <div className="lg:col-span-3">
-              <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-hide">
-                {experiences.map((exp, index) => (
-                  <button
-                    key={exp.company}
-                    onClick={() => setActiveIndex(index)}
-                    className={`px-4 py-3 text-left text-sm font-medium rounded-lg transition-all whitespace-nowrap lg:whitespace-normal min-w-fit ${
-                      activeIndex === index
-                        ? "bg-primary/10 text-primary border-l-2 border-primary"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50 border-l-2 border-transparent"
+          {/* Timeline view */}
+          <div className="relative">
+            {/* Vertical timeline line */}
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block" />
+
+            <div className="space-y-8">
+              {experiences.map((exp, index) => (
+                <div
+                  key={exp.company}
+                  className={`relative md:pl-20 transition-all duration-500 ${
+                    activeIndex === index ? "opacity-100" : "opacity-60 hover:opacity-100"
+                  }`}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  {/* Timeline dot */}
+                  <div className={`absolute left-6 top-8 w-5 h-5 rounded-full border-2 hidden md:flex items-center justify-center transition-all ${
+                    activeIndex === index 
+                      ? "border-primary bg-primary scale-125" 
+                      : "border-border bg-background hover:border-primary"
+                  }`}>
+                    {activeIndex === index && (
+                      <div className="w-2 h-2 rounded-full bg-primary-foreground" />
+                    )}
+                  </div>
+
+                  {/* Content card */}
+                  <div 
+                    className={`glass border rounded-2xl p-6 md:p-8 cursor-pointer transition-all duration-300 ${
+                      activeIndex === index 
+                        ? "border-primary/50 shadow-lg shadow-primary/10" 
+                        : "border-border hover:border-primary/30"
                     }`}
                   >
-                    {exp.company}
-                  </button>
-                ))}
-              </div>
-            </div>
+                    <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+                      <div className="flex items-start gap-4">
+                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-colors ${
+                          activeIndex === index ? "bg-primary/20" : "bg-secondary"
+                        }`}>
+                          <Building2 className={`w-7 h-7 ${activeIndex === index ? "text-primary" : "text-muted-foreground"}`} />
+                        </div>
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">
+                            {exp.role}
+                          </h3>
+                          <p className="text-primary font-semibold text-lg flex items-center gap-2">
+                            {exp.company}
+                            <ChevronRight className={`w-4 h-4 transition-transform ${activeIndex === index ? "rotate-90" : ""}`} />
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.type === "current" && (
+                          <Badge className="bg-primary/20 text-primary border-primary/30 px-3 py-1 animate-pulse">
+                            Current
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
 
-            {/* Content - Right side */}
-            <div className="lg:col-span-9">
-              <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
-                <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">
-                      {experiences[activeIndex].role}
-                    </h3>
-                    <p className="text-primary font-semibold text-lg flex items-center gap-2">
-                      {experiences[activeIndex].company}
-                      <ExternalLink className="w-4 h-4" />
-                    </p>
+                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-6">
+                      <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50">
+                        <Calendar className="w-4 h-4 text-primary" />
+                        {exp.period}
+                      </span>
+                      <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50">
+                        <MapPin className="w-4 h-4 text-primary" />
+                        {exp.location}
+                      </span>
+                    </div>
+
+                    {/* Expandable content */}
+                    <div className={`overflow-hidden transition-all duration-500 ${
+                      activeIndex === index ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                    }`}>
+                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                        {exp.description}
+                      </p>
+
+                      <ul className="space-y-3 mb-8">
+                        {exp.highlights.map((highlight, idx) => (
+                          <li 
+                            key={idx} 
+                            className="flex items-start gap-3 text-muted-foreground animate-slide-in-left"
+                            style={{ animationDelay: `${idx * 0.1}s` }}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                            <span className="leading-relaxed">{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-wrap gap-2">
+                        {exp.skills.map((skill, idx) => (
+                          <span
+                            key={skill}
+                            className="px-3 py-1.5 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
+                            style={{ animationDelay: `${idx * 0.05}s` }}
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Collapsed preview */}
+                    {activeIndex !== index && (
+                      <p className="text-muted-foreground text-sm line-clamp-2">
+                        {exp.description}
+                      </p>
+                    )}
                   </div>
-                  {experiences[activeIndex].type === "current" && (
-                    <Badge className="bg-primary/20 text-primary border-primary/30 px-3 py-1">
-                      Current
-                    </Badge>
-                  )}
                 </div>
-
-                <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-6">
-                  <span className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-primary" />
-                    {experiences[activeIndex].period}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-primary" />
-                    {experiences[activeIndex].location}
-                  </span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {experiences[activeIndex].description}
-                </p>
-
-                <ul className="space-y-3 mb-8">
-                  {experiences[activeIndex].highlights.map((highlight, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                      <span className="leading-relaxed">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {experiences[activeIndex].skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 text-xs font-medium rounded-full bg-secondary text-foreground border border-border"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
