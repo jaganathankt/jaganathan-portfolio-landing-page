@@ -4,40 +4,40 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Dark blue & white student portfolio theme */
-  --background: oklch(0.18 0.04 250);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.22 0.04 250);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.22 0.04 250);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.98 0 0);
-  --primary-foreground: oklch(0.18 0.04 250);
-  --secondary: oklch(0.28 0.05 250);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.25 0.04 250);
-  --muted-foreground: oklch(0.7 0.02 250);
-  --accent: oklch(0.65 0.15 200);
-  --accent-foreground: oklch(0.98 0 0);
+  /* Rich premium dark theme with teal accents */
+  --background: oklch(0.14 0.015 240);
+  --foreground: oklch(0.95 0.01 240);
+  --card: oklch(0.18 0.02 240);
+  --card-foreground: oklch(0.95 0.01 240);
+  --popover: oklch(0.18 0.02 240);
+  --popover-foreground: oklch(0.95 0.01 240);
+  --primary: oklch(0.72 0.14 180);
+  --primary-foreground: oklch(0.14 0.015 240);
+  --secondary: oklch(0.22 0.02 240);
+  --secondary-foreground: oklch(0.95 0.01 240);
+  --muted: oklch(0.25 0.015 240);
+  --muted-foreground: oklch(0.65 0.01 240);
+  --accent: oklch(0.72 0.14 180);
+  --accent-foreground: oklch(0.14 0.015 240);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.32 0.05 250);
-  --input: oklch(0.28 0.04 250);
-  --ring: oklch(0.65 0.15 200);
-  --chart-1: oklch(0.65 0.15 200);
-  --chart-2: oklch(0.7 0.12 180);
-  --chart-3: oklch(0.6 0.1 220);
-  --chart-4: oklch(0.75 0.08 190);
-  --chart-5: oklch(0.55 0.12 210);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.15 0.04 250);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.65 0.15 200);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.25 0.04 250);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.32 0.05 250);
-  --sidebar-ring: oklch(0.65 0.15 200);
+  --destructive-foreground: oklch(0.95 0 0);
+  --border: oklch(0.28 0.02 240);
+  --input: oklch(0.2 0.015 240);
+  --ring: oklch(0.72 0.14 180);
+  --chart-1: oklch(0.72 0.14 180);
+  --chart-2: oklch(0.65 0.12 200);
+  --chart-3: oklch(0.58 0.1 220);
+  --chart-4: oklch(0.75 0.1 160);
+  --chart-5: oklch(0.68 0.08 190);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.12 0.015 240);
+  --sidebar-foreground: oklch(0.95 0.01 240);
+  --sidebar-primary: oklch(0.72 0.14 180);
+  --sidebar-primary-foreground: oklch(0.14 0.015 240);
+  --sidebar-accent: oklch(0.22 0.02 240);
+  --sidebar-accent-foreground: oklch(0.95 0.01 240);
+  --sidebar-border: oklch(0.28 0.02 240);
+  --sidebar-ring: oklch(0.72 0.14 180);
 }
 
 @theme inline {
@@ -88,4 +88,28 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.14 0.015 240);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.28 0.02 240);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.35 0.02 240);
+}
+
+/* Selection color */
+::selection {
+  background: oklch(0.72 0.14 180 / 0.3);
+  color: oklch(0.95 0.01 240);
 }
