@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"
 
 const stats = [
   { value: 4, suffix: "+", label: "Years Experience", icon: TrendingUp },
-  { value: 200, suffix: "+", label: "Learners Trained", icon: GraduationCap },
+  { value: 500, suffix: "+", label: "Students Trained", icon: GraduationCap },
   { value: 50, suffix: "+", label: "MNC Placements", icon: Users },
   { value: 10, suffix: "+", label: "Projects Delivered", icon: BarChart3 },
 ]
@@ -55,7 +55,6 @@ export function About() {
       <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
-            <span className="text-primary font-mono text-sm">01.</span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">About Me</h2>
             <div className="h-px bg-gradient-to-r from-border to-transparent flex-1 max-w-xs" />
           </div>

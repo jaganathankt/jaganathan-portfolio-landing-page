@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { name: "About", href: "#about", number: "01" },
-  { name: "Experience", href: "#experience", number: "02" },
-  { name: "Skills", href: "#skills", number: "03" },
-  { name: "Contact", href: "#contact", number: "04" },
+  { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+  { name: "Skills", href: "#skills" },
+  { name: "Contact", href: "#contact" },
 ]
 
 export function Navbar() {
@@ -57,7 +58,6 @@ export function Navbar() {
               onClick={() => scrollToSection(link.href)}
               className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium group"
             >
-              <span className="text-primary font-mono text-xs mr-1">{link.number}.</span>
               {link.name}
             </button>
           ))}
@@ -92,7 +92,6 @@ export function Navbar() {
                 onClick={() => scrollToSection(link.href)}
                 className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium text-left"
               >
-                <span className="text-primary font-mono text-sm mr-2">{link.number}.</span>
                 {link.name}
               </button>
             ))}

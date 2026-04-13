@@ -39,7 +39,8 @@ export function Hero() {
           
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mb-12 leading-relaxed animate-fade-in" style={{ animationDelay: "0.4s" }}>
             Transforming raw data into <span className="text-foreground font-medium">actionable business insights</span>. 
-            4+ years of experience in data analytics with expertise in Python, SQL, Power BI, and Tableau.
+            4+ years of experience in data analytics with expertise in Python, SQL, Power BI, and Tableau. 
+            <span className="text-primary font-medium">Trained over 500+ students</span> in data science and analytics.
           </p>
           
           <div className="flex flex-wrap gap-4 mb-16 animate-slide-up" style={{ animationDelay: "0.5s" }}>

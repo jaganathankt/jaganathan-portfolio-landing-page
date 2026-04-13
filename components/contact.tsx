@@ -74,7 +74,6 @@ export function Contact() {
       <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
-            <span className="text-primary font-mono text-sm">04.</span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Get In Touch</h2>
             <div className="h-px bg-gradient-to-r from-border to-transparent flex-1 max-w-xs" />
           </div>
