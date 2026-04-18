@@ -79,14 +79,14 @@ export function ChatWidget() {
                 key={idx}
                 className={`p-2 rounded-lg text-sm ${
                   msg.role === "user"
-                    ? "bg-blue-600 text-white ml-auto max-w-[80%]"
+                    ? "bg-blue-600 text-black ml-auto max-w-[80%]"
                     : "bg-white border max-w-[80%]"
                 }`}
               >
                 {msg.content}
               </div>
             ))}
-            {isLoading && <div className="text-xs text-gray-400">Typing...</div>}
+            {isLoading && <div className="text-xs text-black-400">Typing...</div>}
           </div>
 
           {/* Input Area */}
@@ -96,7 +96,7 @@ export function ChatWidget() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               placeholder="Type a message..."
-              className="flex-1 border rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="flex-1 border rounded bg-blue-600 text-white px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
             <button
               onClick={sendMessage}
