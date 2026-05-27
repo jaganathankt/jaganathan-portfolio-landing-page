@@ -99,10 +99,14 @@ export function About() {
 
             <div className="lg:col-span-2">
               <div className="relative group">
-                <div className="relative w-full aspect-square max-w-sm mx-auto">
+                <div className="relative w-full aspect-square max-w-sm mx-auto overflow-hidden">
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/30 to-primary/5 border border-primary/30 animate-pulse-glow" />
-                  <div className="absolute inset-4 rounded-xl glass flex items-center justify-center overflow-hidden">
-                    <span className="text-8xl font-bold text-gradient">JK</span>
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden glass">
+                    <img 
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/jaganathan-AEKdKm9SCe031bPUPqM7DmRRkcq2sS.jpg"
+                      alt="Jaganathan K T"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                   <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-2 border-primary/30 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
                 </div>
